@@ -4,8 +4,8 @@ import { User } from '../types';
 
 interface InfoCardProps {
   user: User;
-  onEditProfile?: () => void; // Opsiyonel yaptık
-  onEditAnswers?: () => void; // Opsiyonel yaptık
+  onEditProfile?: () => void; 
+  onEditAnswers?: () => void;
 }
 
 const InfoItem: React.FC<{ icon: React.ReactNode; label: string; value: React.ReactNode }> = ({ icon, label, value }) => (

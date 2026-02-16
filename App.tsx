@@ -24,7 +24,6 @@ function App() {
   const [unreadCount, setUnreadCount] = useState(0);
   const [userProfileData, setUserProfileData] = useState<User | null>(null);
 
-  // 1. Auth Durumu
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (firebaseUser) => {
       setUser(firebaseUser);
@@ -36,7 +35,6 @@ function App() {
     return () => unsubscribe();
   }, []);
 
-  // 2. Profil Verisi ve Onboarding Kontrolü
   useEffect(() => {
     if (!user) return;
 
@@ -52,7 +50,6 @@ function App() {
     return () => unsubscribe();
   }, [user]);
 
-  // 3. Eşleşmeler ve Unread Mesaj dinleyicileri (Kodun geri kalanı aynı...)
   useEffect(() => {
     if (!user) { setUnreadCount(0); return; }
     const q = query(collectionGroup(db, 'messages'), where('to', '==', user.uid), where('read', '==', false));
@@ -90,7 +87,6 @@ function App() {
     } catch (error) { console.error(error); }
   };
 
-  // --- RENDER MANTIĞI ---
 
   if (authLoading) return (
     <div className="h-screen flex flex-col items-center justify-center bg-[#111827]">
@@ -101,12 +97,10 @@ function App() {
 
   if (!user) return <LoginScreen />;
 
-  // BEKÇİ: Eğer kullanıcı mülakatı tamamlamadıysa Onboarding'e zorla
-  // isOnboarded alanı false ise veya hiç yoksa (answers boşsa) mülakat açılır.
+  
   if (userProfileData && (!userProfileData.isOnboarded || !userProfileData.answers || userProfileData.answers.length === 0)) {
     return <OnboardingScreen onComplete={() => {
         toast.success("Mülakat başarıyla tamamlandı! Yapay zeka eşleşmeleri hazırlıyor.");
-        // Sayfayı yenilemeye gerek kalmadan onSnapshot zaten veriyi güncelleyecek
     }} />;
   }
 

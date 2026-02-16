@@ -13,9 +13,8 @@ const firebaseConfig = {
   measurementId: import.meta.env.VITE_FIREBASE_MEASUREMENT_ID
 };
 
-// Firebase'i başlat
+
 const app = initializeApp(firebaseConfig);
-// firebase.ts dosyasının en altına ekle
 import { collection, doc, setDoc } from "firebase/firestore";
 
 (window as any).uploadQuestions = async () => {
@@ -40,7 +39,7 @@ import { collection, doc, setDoc } from "firebase/firestore";
   }
   console.log("Tüm sorular başarıyla yüklendi!");
 };
-// Servisleri dışa aktar
+
 export const auth = getAuth(app);
 export const db = getFirestore(app);
 export const googleProvider = new GoogleAuthProvider();

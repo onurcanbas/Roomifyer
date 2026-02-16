@@ -8,11 +8,9 @@ interface LifestyleCardProps {
 
 const LifestyleCard: React.FC<LifestyleCardProps> = ({ user }) => {
   
-  // İkon mantığını basitleştirdik, eğer preferenceType yoksa Target ikonu kullanıyoruz
   const getIcon = (item: any) => {
     if (item.preferenceType === 'positive') return <ThumbsUp className="text-green-500" size={16} />;
     if (item.preferenceType === 'negative') return <ThumbsDown className="text-red-500" size={16} />;
-    // Varsayılan olarak soru kategorisini temsil eden şık bir ikon
     return <Target className="text-indigo-400 opacity-60" size={16} />;
   };
 
@@ -31,7 +29,6 @@ const LifestyleCard: React.FC<LifestyleCardProps> = ({ user }) => {
                 {getIcon(ans)}
               </div>
               <div className="flex flex-col">
-                {/* DİKKAT: Artık getQuestionText(ans.questionId) yerine direkt ans.text kullanıyoruz */}
                 <p className="text-[10px] text-gray-500 font-bold uppercase tracking-tighter leading-tight mb-1">
                   {ans.text}
                 </p>

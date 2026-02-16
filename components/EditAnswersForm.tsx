@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { User } from '../types';
 import { X, Save, RotateCcw } from 'lucide-react';
 
-// OnboardingScreen ile aynı seçenek havuzunu kullanıyoruz
 const QUESTION_OPTIONS: { [key: string]: string[] } = {
   "Sigara kullanır mısın?": ["Evet", "Hayır", "Sosyal içiciyim"],
   "Alkol kullanır mısın?": ["Evet", "Hayır", "Sosyal içiciyim"],
@@ -53,7 +52,6 @@ const EditAnswersForm: React.FC<EditAnswersFormProps> = ({ answers, onSave, onCa
       <form onSubmit={handleSubmit} className="space-y-6">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6">
           {formData.map((item, index) => {
-            // Soru metnine göre seçenekleri havuzdan çekiyoruz
             const options = QUESTION_OPTIONS[item.text] || ["Belirtilmedi"];
             
             return (

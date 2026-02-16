@@ -1,20 +1,30 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+Roomifyer: Vector-Based Roommate Matching Platform
+Roomifyer is a data-driven decision support system designed to match potential roommates based on lifestyle compatibility and budget constraints. Unlike traditional search-based platforms, Roomifyer utilizes mathematical metrics to predict the most accurate matches between users.
 
-# Run and deploy your AI Studio app
+🚀 Overview
+Finding a compatible roommate is a complex multi-dimensional problem. Roomifyer solves this by analyzing 12 distinct lifestyle parameters and financial data to provide a "Compatibility Score." This project served as my Senior Graduation Project at Ege University.
 
-This contains everything you need to run your app locally.
+🛠 Tech Stack
+Frontend: React.js + Vite (for high-performance development and optimized builds).
 
-View your app in AI Studio: https://ai.studio/apps/drive/1KkKkj-fYO1ivT9Uiuw5VDEA5pTtmVGjV
+Backend & Database: Firebase (Real-time Database & Authentication).
 
-## Run Locally
+Styling: Modern CSS/SCSS with a focus on dark-mode UI/UX.
 
-**Prerequisites:**  Node.js
+🧠 Technical Depth: Vectorial Decision Support
+The core of Roomifyer lies in its matching engine. The system transforms qualitative interview data into quantitative vectors:
 
+12-Parameter Lifestyle Analysis: Users are evaluated on habits like smoking, social drinking, and daily routines.
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+Euclidean Distance Metric: The algorithm calculates the geometric distance between user vectors in a multi-dimensional space.
+
+Budget Assimilation: Financial constraints are assimilated into the user's vector to refine the matching accuracy.
+
+Match Prediction: The system outputs a percentage-based compatibility score (e.g., %59 Match) to help users make informed decisions.
+
+✨ Key Features
+Dynamic Interview System: Collects structured data from users to build their "Lifestyle Profile."
+
+Real-time Matching: Instant calculation of compatibility scores as new users join the platform.
+
+Professional UI: A sleek, user-friendly interface featuring detailed profile cards and decision-support panels.

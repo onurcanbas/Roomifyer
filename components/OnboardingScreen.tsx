@@ -36,7 +36,6 @@ const OnboardingScreen: React.FC<OnboardingProps> = ({ onComplete }) => {
   const currentQ = APP_QUESTIONS[step];
 
   const handleAnswer = async (option: string) => {
-    // Cevabı kategorisi ve ağırlığıyla beraber saklıyoruz
     const newAnswers = [...answers, { 
       text: currentQ.text, 
       answer: option, 
@@ -51,7 +50,6 @@ const OnboardingScreen: React.FC<OnboardingProps> = ({ onComplete }) => {
       setIsFinishing(true);
       try {
         if (auth.currentUser) {
-          // Firestore'u güncelle ve isOnboarded flag'ini true yap
           await updateDoc(doc(db, "users", auth.currentUser.uid), {
             answers: newAnswers,
             isOnboarded: true,

@@ -8,7 +8,6 @@ import { signOut, updatePassword } from 'firebase/auth';
 import { doc, updateDoc, getDoc , setDoc ,serverTimestamp} from 'firebase/firestore'; 
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { LogOut, ShieldCheck, KeyRound, CheckCircle2, ArrowRight } from 'lucide-react';
-import dummyData from '../dummyData.json';
 const ProfilePage = () => {
   const [isEditing, setIsEditing] = useState(false);
   const [isEditingAnswers, setIsEditingAnswers] = useState(false);
@@ -25,7 +24,6 @@ const ProfilePage = () => {
     const fetchUserData = async () => {
       if (!currentUser) return;
       try {
-        // ARTIK getDocs(questions) YAPMIYORUZ
         const userDocRef = doc(db, 'users', currentUser.uid);
         const userDoc = await getDoc(userDocRef);
 
@@ -38,24 +36,8 @@ const ProfilePage = () => {
     };
     fetchUserData();
   }, [currentUser]);
-const uploadDummyData = async () => {
-  const dummyUsers = [dummyData];
-  
-  for (const user of dummyUsers) {
-    const id = "dummy_" + Math.random().toString(36).substr(2, 9);
-    await setDoc(doc(db, 'users', id), {
-      ...user,
-      uid: id,
-      email: `${id}@homie.test`,
-      matches: [],
-      lastUpdated: serverTimestamp()
-    });
-  }
-  alert("20 Dummy Kullanıcı Yüklendi!");
-};
 
-// Return içinde geçici bir buton:
-<button onClick={uploadDummyData} className="bg-orange-500 p-2 rounded">Veri Yükle</button>
+
   const handleSaveProfile = async (updatedData: Partial<User>) => {
     if (!currentUser) return;
     try {
@@ -70,7 +52,6 @@ const uploadDummyData = async () => {
     if (!currentUser || !userProfile) return;
     try {
       const userDocRef = doc(db, 'users', currentUser.uid);
-      // Soruları güncellerken kategorileri ve ağırlıkları koruduğumuzdan emin oluyoruz
       await updateDoc(userDocRef, { answers: updatedAnswers });
       setUserProfile(prev => prev ? { ...prev, answers: updatedAnswers } : null);
       setIsEditingAnswers(false);
@@ -162,7 +143,7 @@ const uploadDummyData = async () => {
         </div>
       )}
 
-      {/* ŞİFRE MODAL (Aynı kalıyor) */}
+      {/* ŞİFRE MODAL*/}
       {showPassModal && (
         <div className="fixed inset-0 z-[110] flex items-center justify-center bg-black/90 backdrop-blur-md p-4">
           <div className="bg-gray-800 border border-gray-700 rounded-[40px] p-10 max-w-sm w-full shadow-2xl">

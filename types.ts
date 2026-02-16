@@ -56,12 +56,11 @@ export interface ChatMatch {
   id: string;
   name: string;
   avatarColor: string;
-  // Firestore'daki detaylı veriler eklendi:
   age?: number;
   job?: string;
   budget?: number;
   hasHouse?: boolean;
   answers?: UserAnswer[];
   description?: string;
-  lastMessage?: any; // Liste sıralaması için
+  lastMessage?: any;
 }
